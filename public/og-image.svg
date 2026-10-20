@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fafaf8"/>
+  <rect x="72" y="72" width="80" height="80" rx="20" fill="#1c1917"/>
+  <text x="112" y="123" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#fafaf8">MZ</text>
+  <text x="72" y="305" font-family="Arial,sans-serif" font-size="72" font-weight="700" fill="#1c1917">Muhammad Zeeshan</text>
+  <text x="76" y="375" font-family="Arial,sans-serif" font-size="38" fill="#78716c">Flutter Developer &amp; CS Student</text>
+  <path d="M76 445H1124" stroke="#dadada"/>
+  <text x="76" y="510" font-family="Arial,sans-serif" font-size="24" fill="#78716c">Flutter · Dart · Firebase · React</text>
+  <text x="76" y="554" font-family="Arial,sans-serif" font-size="22" fill="#78716c">zeeshanxbuilds.vercel.app</text>
+</svg>

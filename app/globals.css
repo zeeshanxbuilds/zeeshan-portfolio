@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Surfaces */
+  --background: #fafaf8;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
+
+  /* Borders & rings */
+  --border: #dadadaab;
+  --ring: #78716c;
+
+  /* Accent — minimal neutral */
+  --accent: #78716c;
+  --accent-foreground: #ffffff;
+
+  --radius-full: 9999px;
+
+  /* Scrollbar */
+  --scrollbar-track: var(--muted);
+  --scrollbar-thumb: color-mix(in srgb, var(--accent) 72%, var(--background));
+  --scrollbar-thumb-hover: var(--accent);
+
+}
+
+.dark {
+  --background: #18181b;
+  --foreground: #e7e5e4;
+  --card: #1c1917;
+  --card-foreground: #e7e5e4;
+  --muted: #1c1917;
+  --muted-foreground: #bcbab8;
+  --border: #292524;
+  --ring: #a8a29e;
+  --accent: #a8a29e;
+  --accent-foreground: #0c0a09;
+
+  --scrollbar-track: color-mix(in srgb, var(--muted) 86%, var(--background));
+  --scrollbar-thumb: color-mix(in srgb, var(--accent) 65%, var(--background));
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--accent) 82%, white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-hanken-grotesk);
+  --font-serif: var(--font-space-grotesk);
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  background-image: url("/noise-compressed.png");
+  background-size: 130px 130px;
+  background-position: 0 0;
+  color: var(--foreground);
+  font-family: var(--font-hanken-grotesk), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+@keyframes title-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+  animation: title-reveal 600ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title { animation: none; }
+}
