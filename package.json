@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cp -f winutil.ps1 public/winutil.ps1 2>/dev/null || true; cp -f winutil.ps1 public/utils 2>/dev/null || true; next build",
     "lint": "eslint"
   },
   "dependencies": {

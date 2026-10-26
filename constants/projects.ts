@@ -43,11 +43,11 @@ export const projects: Project[] = [
     features: [
       "Install common programs in bulk through winget.",
       "Apply system tweaks and fix common Windows problems from one interface.",
-      "Open PowerShell as administrator and run: irm https://zeeshanxbuilds.tech/utils | iex",
+      "Open PowerShell as administrator and run: irm https://zeeshanxbuilds.vercel.app/utils | iex",
       "Forked from ChrisTitusTech/winutil, used under the MIT license.",
     ],
     category: "Windows Utility",
-    command: "irm https://zeeshanxbuilds.tech/utils | iex",
+    command: "irm https://zeeshanxbuilds.vercel.app/utils | iex",
     commandInstruction: "Open PowerShell as administrator and run:",
     githubUrl: "https://github.com/zeeshanxbuilds/zeeshan-utils",
     featured: false,
