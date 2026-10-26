@@ -7,5 +7,8 @@ export interface Project {
   technologies: string[];
   features: string[];
   githubUrl: string;
+  category?: string;
+  command?: string;
+  commandInstruction?: string;
   featured?: boolean;
 }

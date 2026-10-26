@@ -1,0 +1,26 @@
+{
+  "task_id": "task-add-zeeshan-utils-project",
+  "task_description": "Clean up constants/projects.ts, add the Zeeshan Utils project (logo, detail page with copyable run command), add Vercel /utils rewrite and headers, and verify lint/build/static output.",
+  "status": "blocked",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": {
+    "retryable": true,
+    "detail": "All code edits are complete and semantic review v2 is APPROVED. Final verification could not run: npm ci fails (ENOTFOUND registry.npmjs.org; --offline ENOTCACHED), so npm run lint, npm run build and out/ checks were not executed. out/winutil.ps1 will not exist even after a successful build because public/winutil.ps1 does not exist (the user's script is untracked at the repo root and the agent is forbidden from touching it)."
+  },
+  "verification": {
+    "build": "fail",
+    "tests": "fail",
+    "test_quality": "pass",
+    "summary": "Not run: dependencies cannot be installed without registry access. No test framework exists and none may be added; no tests were added. Static checks passed: vercel.json parses and keeps all 6 original keys; no app/utils or public/utils route; sitemap.ts maps all projects; diff reviewed manually and by semantic reviewer (v1 NEEDS_CHANGES -> fixed; v2 APPROVED)."
+  },
+  "review": {
+    "iterations": 2,
+    "final_verdict": "APPROVED",
+    "files": ["2026-10-26-101340-review.md", "2026-10-26-101820-review.md"],
+    "remaining_user_actions": [
+      "Move root winutil.ps1 to public/winutil.ps1 (agent forbidden to touch it); otherwise /utils 404s",
+      "Confirm zeeshanxbuilds.tech is attached to the Vercel project; siteConfig.url is https://zeeshanxbuilds.vercel.app",
+      "Run npm ci, npm run lint, npm run build with network access and check out/projects/zeeshan-utils.html and out/sitemap.xml"
+    ]
+  }
+}

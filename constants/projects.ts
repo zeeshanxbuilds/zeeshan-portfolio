@@ -1,5 +1,4 @@
 import type { Project } from "@/types/project";
-import { siteConfig } from "@/constants/site";
 
 export const projects: Project[] = [
   {
@@ -33,5 +32,24 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/zeeshanxbuilds/Orienta-Notes",
     featured: true,
+  },
+  {
+    slug: "zeeshan-utils",
+    logo: "/assets/projects/zeeshan-utils.svg",
+    title: "Zeeshan Utils",
+    subtitle: "A Windows utility for apps, tweaks and fixes",
+    description: "A Windows utility for installing programs, applying tweaks and fixing common problems, forked from Chris Titus Tech's WinUtil (MIT license).",
+    technologies: ["PowerShell", "WPF", "XAML", "winget", "Git"],
+    features: [
+      "Install common programs in bulk through winget.",
+      "Apply system tweaks and fix common Windows problems from one interface.",
+      "Open PowerShell as administrator and run: irm https://zeeshanxbuilds.tech/utils | iex",
+      "Forked from ChrisTitusTech/winutil, used under the MIT license.",
+    ],
+    category: "Windows Utility",
+    command: "irm https://zeeshanxbuilds.tech/utils | iex",
+    commandInstruction: "Open PowerShell as administrator and run:",
+    githubUrl: "https://github.com/zeeshanxbuilds/zeeshan-utils",
+    featured: false,
   },
 ];

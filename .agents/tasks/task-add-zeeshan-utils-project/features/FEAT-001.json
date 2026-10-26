@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-001",
+  "type": "chore",
+  "description": "Environment setup and baseline: install dependencies with npm ci and confirm lint and build pass on the unmodified code before any edits.",
+  "status": "blocked",
+  "steps": [
+    "From the repo root (quote the path, it contains spaces) run: npm ci",
+    "Run: npm run lint and record the result",
+    "Run: npm run build and record the result (output goes to out/)",
+    "Record in findings whether out\\winutil.ps1 exists after the baseline build (expected: it does not, because public/winutil.ps1 does not exist). Do not open, read, move or copy any winutil.ps1 file.",
+    "If npm ci fails due to network or sandbox restrictions, record the exact error in findings and mark blocked with retryable true"
+  ],
+  "acceptance_criteria": [
+    "npm ci completes successfully",
+    "npm run lint exits 0 on the baseline",
+    "npm run build exits 0 on the baseline"
+  ],
+  "verification": [
+    "npm ci",
+    "npm run lint",
+    "npm run build"
+  ],
+  "blocked_reason": {
+    "retryable": true,
+    "detail": "npm ci failed with network error: 'npm error code ENOTFOUND / syscall getaddrinfo / network request to https://registry.npmjs.org/zod-validation-error/-/zod-validation-error-4.0.2.tgz failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org'. The sandbox has no DNS/network access to the npm registry. node_modules does not exist, so npm run lint and npm run build cannot run."
+  },
+  "findings": "Environment: Node v24.22.0, npm 11.19.1. npm ci exit 1 (ENOTFOUND registry.npmjs.org, sandbox network restriction). node_modules absent before and after (Test-Path node_modules = False). Lint and build NOT run (no dependencies installed). Test-Path out\\winutil.ps1 = False (no out/ dir; no build ran). Test-Path public\\winutil.ps1 = False, confirming public/winutil.ps1 does not exist; the user's winutil.ps1 is untracked at repo root and was not touched. git status clean except untracked .agents/ and winutil.ps1; git works only with $env:GIT_CONFIG_GLOBAL='NUL' (warning about .kiro/settings permission denied is harmless). No source changes made, no commits. RETRY (npm ci --offline): exit 1, 'npm error code ENOTCACHED: request to https://registry.npmjs.org/zod-validation-error/-/zod-validation-error-4.0.2.tgz failed: cache mode is only-if-cached but no cached response is available'. Local npm cache (sandbox npm-cache under AppData\\Local\\Packages\\kiro-sandbox-pool-2) does not contain the lockfile packages. npm cleanup also warned EPERM rmdir node_modules\\@eslint-community; the leftover node_modules dir was empty (0 files) and was removed with a non-recursive Remove-Item. Baseline lint/build still NOT run. Needs a machine with registry access."
+}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { CodeBlock } from "@/components/shared/CodeBlock";
 import { projects } from "@/constants/projects";
 import { siteConfig } from "@/constants/site";
 import { JsonLd, getBreadcrumbSchema, getProjectSchema } from "@/components/seo/JsonLd";
@@ -43,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Container className="pb-24 pt-16">
         <Link href="/projects" className="text-xs text-muted-foreground hover:text-foreground">← All Projects</Link>
         <div className="mb-4 mt-12">
-          <span className="inline-flex rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground">Mobile Project</span>
+          <span className="inline-flex rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground">{project.category ?? "Mobile Project"}</span>
         </div>
         <h1 className="font-serif text-3xl font-semibold tracking-tight">{project.title}</h1>
         <p className="mt-5 text-sm leading-7 text-muted-foreground">{project.description}</p>
@@ -53,6 +54,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             View GitHub Profile
           </a>
         </div>
+        {project.command && (
+          <section className="mt-12">
+            <h2 className="font-serif text-xl font-semibold">Quick Start</h2>
+            {project.commandInstruction && (
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">{project.commandInstruction}</p>
+            )}
+            <div className="mt-4">
+              <CodeBlock code={project.command} />
+            </div>
+          </section>
+        )}
         <div className="mt-20 grid grid-cols-1 gap-10 md:mt-24 md:grid-cols-[minmax(0,1fr)_220px] md:gap-12">
           <section>
             <h2 className="font-serif text-xl font-semibold">Key Features</h2>
